@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row">
+  <div class="col s6 offset-s3">
+    <h1>Login</h1>
+    <form method="POST">
+      <div class="input-field">
+	<input id="email" name="email" type="email">
+	<label for="email">Email Address<label>
+      </div>
+      <div class="input-field">
+	<input id="password" name="password" type="password">
+	<label for="password">Password<label>
+      </div>
+      <input type="hidden" name="prev" value="{{ prev }}">
+      <button class="waves-effect waves-light btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<div class="row">
+  <a href="{{url_for('create')}}">Create Account</a>
+</div>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="row">
+
+  
+  <h1> {{ item.name }}</h1>
+
+  
+  <div class="col s6">
+    <div class="section">
+      <h5>Description</h5>
+      {{ item.description }}
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <ul>
+	<li>Category: {{item.category}}</li>
+	<li>Price: £{{item.price}}</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <form method="POST">
+	<div class="input-field col s3">
+          <input placeholder="" id="quantity" name="quantity" type="text" value=1 class="validate">
+          <label for="quantity">Quantity</label>
+        </div>
+	{% if session["user"] %}
+	<button class="waves-effect waves-light btn" name="buy">Add to Cart</button>
+	
+	{% else %}
+	<p>Login to add this item to the cart</p>
+	{#<a class="waves-effect waves-light btn disabled" href="#">Add to Cart</a>#}
+	<button class="waves-effect waves-light btn disabled" name="buy">Add to Cart</button>
+	{% endif %}
+      </form>
+    </div>
+
+    <div class="section">
+      <h3>Reviews</h3>
+      {% for item in reviews %}
+      <div class="card">
+	<div class="card-content">
+	  <span class="card-title"><strong>{{item.user.name}}</strong> Gave this {{ item.stars }}  out of  5 Stars</span>
+	  {% markdown %}
+	  {{ item.comments | safe}}
+	  {% endmarkdown %}
+	</div>
+      </div>
+      {% endfor %}
+    </div>  
+  </div>   <!-- Col -->
+
+  <div class="col s6">
+    <img class="responsive-img"  src="{{ url_for('static', filename=item.image)}}">
+  </div>
+    
+</div>
+    
+{% endblock content %}

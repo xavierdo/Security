@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>6005CEM: 2021 CW 2</title>
+    
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ url_for('static' , filename='materialize/css/materialize.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='custom.css')}}">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Markdown -->
+    <link rel="stylesheet" href="{{ url_for('static' , filename='markdownEditor/dist/simplemde.min.css')}}">
+    <script src="{{ url_for('static' , filename='markdownEditor/dist/simplemde.min.js')}}"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    
+    <style>
+      nav a {
+	  text-transform: uppercase;
+      }
+    </style>
+    
+</head>
+
+<body>
+  <div class="container">
+    
+    {# We Cannot have Include and Blocks #}
+    <nav class="nav-extended  deep-purple">
+      <!-- Dropdown for user admin -->
+      
+      <div class="nav-wrapper deep-purple darken-4">
+
+	<ul id="nav-mobile" class="hide-on-med-and-down">
+	  <li><a href="{{ url_for('index') }}">Home</a></li>
+	  <li><a href="{{ url_for('products') }}">Products</a></li>
+	</ul>
+	<ul id="nav-mobile" class="right hide-on-med-and-down">
+	  {% if session["basket"] %}
+	  <li><a href="{{ url_for('basket')}}">Basket</a></li>
+	  {% endif %}
+	  {% if session["user"] %}
+	  <li><a href="{{ url_for('settings', userId=session['user']) }}">Settings</a></li>
+	  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+	  {% else %}
+	  <li><a href="{{ url_for('login', prev=request.endpoint)}}">Login</a></li>
+	  {% endif %}
+	  <li><a href="{{ url_for('about') }}">About</a></li>	  
+	</ul>
+      </div>
+      {% block navTabs %}
+
+      {% endblock navTabs %}
+      </nav>
+
+
+    <!-- Messages and things -->
+    {% include "helpers/checkLogin.html" %}
+    {% include "helpers/flashMessage.html" %}
+
+    <!-- Main Page Content -->
+    <div class="row">
+    {% block content %}
+    {% endblock content %}
+    </div>
+
+    
+
+  </div> <!-- End Container -->
+
+        <!-- Compiled and minified JavaScript -->
+    <script src="{{ url_for('static' , filename='materialize/js/materialize.min.js')}}"></script>
+
+    
+    {% block scripts %}
+    {% endblock scripts %}
+
+    
+</body>
+
+</html>

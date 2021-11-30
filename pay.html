@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h1>Payment</h1>
+
+<p>User: {{user.name}} will buy items</p>
+<p>Total payment of <strong>£{{ cost }}</strong></p>
+
+
+
+<!-- This does nothing -->
+<form>
+  <div class="row">
+    <div class="input-field col s12">
+      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+      <label for="first_name">Name</label>
+    </div>
+
+    <div class="input-field col s12">
+      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+      <label for="first_name">Card Number</label>
+    </div>
+
+    
+    
+    <button class="waves-effect waves-light btn">Pay</button>
+  </div>
+</form>
+
+  {% endblock %}

@@ -1,0 +1,52 @@
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab">
+      <a href="#" class="white-text"><strong>Practice:</strong></a>
+    </li>
+    <li class="tab"><a href="{{url_for('requestHeaders')}}">Request Headers</a></li>
+    <li class="tab {% if method == 'GET' %}active {% endif %}">
+      <a href="{{url_for('getHeaders')}}">Get Requests</a>
+    </li>
+    <li class="tab {% if method == 'POST' %}active {% endif %}">
+      <a href="{{url_for('postHeaders')}}">Post Requests</a>
+    </li>
+    <li class="tab">
+      <a href="{{url_for('requestJson')}}" rel="noreferrer noopener" target="_blank">Json Response</a>
+    </li>
+  </ul>
+</div>
+
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab">
+      <a href="#" class="white-text"><strong>Challenges:</strong></a>
+    </li>
+    <li class="tab {% if request.endpoint == 'userAgentChallenge' %}active{% endif %}">
+      <a href="{{url_for('userAgentChallenge')}}">UserAgents</a>      
+    </li>
+
+    <li class="tab {% if request.endpoint == 'formDataChallenge' %}active{% endif %}">
+      <a href="{{url_for('formDataChallenge')}}">Form Data</a>      
+    </li>
+
+    <li class="tab {% if request.endpoint == 'apiDataChallenge' %}active{% endif %}">
+      <a href="{{url_for('apiDataChallenge')}}">API Data</a>      
+    </li>
+
+    
+    <li class="tab {% if request.endpoint == 'responseChallenge' %}active{% endif %}">
+      <a href="{{url_for('responseChallenge')}}">Responses</a>
+    </li>
+
+    <li class="tab {% if request.endpoint == 'automateSimple' %}active{% endif %}">
+      <a href="{{url_for('automateSimple')}}">Automate</a>
+    </li>
+
+    
+    <li class="tab {% if request.endpoint == 'automateStart' %}active{% endif %}">
+      <a href="{{url_for('automateStart')}}">Automate 2</a>
+    </li>
+	
+  </ul>
+</div>
+

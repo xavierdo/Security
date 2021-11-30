@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <h1>Leave a Comment</h1>
+
+<p> Please leave a comment for the Item.</p>
+  <form method="POST">
+
+    {# Different form if we have a review #}
+    {% if review %}
+    <div class="row">
+        <div class="input-field col s6">
+	<p class="range-field">
+	  <input type="range" id="rating" name="rating" min="0" max="5" value="5"/>
+	</p>
+
+        <label for="rating">Rating</label>
+        </div>
+
+	
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="textarea1" name="review" class="materialize-textarea">
+	  {{review.comments}}
+	</textarea>
+        <label for="textarea1">Feedback (Markdown is Supported for Formatting)</label>
+      </div>
+    </div>
+
+    <input type="hidden" name="reviewId" value="{{review.id}}">
+    
+    {% else %}
+    <div class="row">
+      <div class="input-field col s6">
+	<p class="range-field">
+	  <input type="range" id="rating" name="rating" min="0" max="5" value="5"/>
+	</p>
+
+        <label for="rating">Rating</label>
+
+      </div>
+      
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="textarea1" name="review" class="materialize-textarea"></textarea>
+        <label for="textarea1">Feedback</label>
+      </div>
+    </div>
+    {% endif %}
+
+    
+    <button class="waves-effect waves-light btn">Submit</button>
+  </form>
+
+
+
+{% endblock content %}

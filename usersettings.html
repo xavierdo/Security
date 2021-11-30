@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row">
+  <h1> User Settings </h1>
+
+  <h2>My Info</h2>
+
+  <table>
+    <thead>
+      <tr>
+	<th>Item</th>
+	<th>Value</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>Name</td><td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <td>Email</td><td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>Level</td><td>{{user.level}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="row">
+  <h3>Purchase History</h3>
+  <table  class="striped">
+    <thead>
+      <tr>
+	<th>Item</th>
+	<th>Date</th>
+	<th>Review</th>
+      </tr>
+    </thead>
+  {% for book in purchaces %}
+  <tr>
+    <td>{{ book.item.name }} </td>
+    <td>{{ book.date }} </td>
+    <td><a href="{{url_for('reviewItem', userId=user.id, itemId=book.item.id)}}">Review Item</a></td>
+  </tr>
+  {% endfor %}
+  </table>
+</div>
+
+<div class="row">
+  <h2>Update Password</h2>
+  <form method="POST" action="{{url_for('updateUser', userId=user.id ) }}">
+    <div class="input-field">
+      <input id="current" name="current" type="password"/>
+      <label for="current">Current Password<label>
+    </div>
+    <div class="input-field">
+      <input id="password" name="password" type="password"/>
+    <label for="password">Password<label>
+    </div>
+    <button class="waves-effect waves-light btn">Update</button>	
+  </form>
+</div>
+
+{% if user.level == "admin" %}
+<div class="row">
+  <h2>Admin Settings</h2>
+  <form method="POST" action="{{url_for('updateUser', userId=user.id ) }}">
+    <p>
+      <label>
+	<input id="admin" name="admin" type="checkbox"
+	       {% if user.level == "admin" %}
+	       checked="checked"
+	       {% endif %}
+	       /><span>Admin User</span>
+      </label>
+    </p>
+    <button class="waves-effect waves-light btn" name="updateadmin" value="true">Update</button>	
+ </form>
+</div>
+{% endif %}
+{% endblock content %}

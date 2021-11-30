@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row">
+
+  
+  <h1>Black Hat Books</h1>
+
+  <p>Sells books and materials essential for the ethical hacker</p>
+
+</div>
+
+<div class="row">
+  <div class="col s8 offset-s2"> 
+    <h3>Product Samples</h3>
+    <div class="carousel carousel-slider center">
+      {% for item in bookList %}
+      <div class="carousel-item" href="#{{item.id}}">
+	<a href="{{ url_for('products', item=item.id) }}">
+	  <img class="responsive-img"  src="{{ url_for('static', filename=item.image)}}">
+	</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+
+  var options =  {
+      fullWidth: true,
+      indicators: true
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.carousel');
+      var instances = M.Carousel.init(elems, options);
+  });
+</script>
+{% endblock %}

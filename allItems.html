@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="row">
+  {% if not session["user"] %}
+  <h1>Example Products</h1>
+  <p>See a selection of our products below</p>
+  {% else %}
+  <h1>Example Products</h1>
+  {% endif %}
+  
+  <ul class="collection">
+    {% for item in books %}
+    <li class="collection-item avatar">
+      <img src="{{ url_for('static', filename=item.image)}}" alt="" class="circle">
+      <a href="{{ url_for('products', item=item.id) }}">	
+	<span class="title">{{ item.name }}</span>
+      </a>
+      <p>{{ item.description }}</p>
+      
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock content %}

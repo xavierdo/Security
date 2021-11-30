@@ -1,0 +1,57 @@
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab">
+      <a href="#" class="white-text"><strong>Practice:</strong></a>
+    </li>
+    <li class="tab {% if request.endpoint == 'basicAuth_Demo' %}active{% endif %}">
+      <a href="{{url_for('basicAuth_Demo')}}">Basic Auth</a>
+    </li>
+    <li class="tab {% if request.endpoint == 'formState' %}active{% endif %}">
+      <a href="{{url_for('formState')}}">State</a>
+    </li>
+    
+    
+
+    <!-- Old Demos -->
+
+
+    <li class="tab {% if request.endpoint == 'cookieDemo' %}active{% endif %}">
+      <a href="{{url_for('cookieDemo')}}">Cookies</a>
+    </li>
+
+    <li class="tab {% if request.endpoint == 'sessionDemo' %}active{% endif %}">
+      <a href="{{url_for('sessionDemo')}}">Sessions</a>
+    </li>
+  </ul>
+</div>
+
+
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab">
+      <a href="#" class="white-text"><strong>Challenges:</strong></a>
+    </li>
+
+    <li class="tab {% if request.endpoint == 'basicAuth_Challenge' %}active{% endif %}">
+      <a href="{{url_for('basicAuth_Challenge')}}">Basic Auth</a>
+    </li>
+    <li class="tab {% if request.endpoint == 'tokenAuth_Challenge' %}active{% endif %}">
+      <a href="{{url_for('tokenAuth_Challenge')}}">Token Auth</a>
+    </li>
+    <li class="tab {% if request.endpoint == 'hiddenState' %}active{% endif %}">
+      <a href="{{url_for('hiddenState')}}">State</a>
+    </li>
+    
+
+
+    
+    
+    <!-- Old Challenges -->
+    <li class="tab {% if request.endpoint == 'cookieChallenge' %}active{% endif %}">
+      <a href="{{url_for('cookieChallenge')}}">Cookies</a>
+    </li>
+    <li class="tab {% if request.endpoint == 'sessionChallenge' %}active{% endif %}">
+      <a href="{{url_for('sessionChallenge')}}">Sessions</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+{% if not session["user"] %}
+<div class="row">
+    <div class="col s12 m12">
+      <div class="card deep-purple darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Not Logged in</span>
+          <p>You are currently not logged in.<p>
+	  <p>Login to buy items and see special offers</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
